@@ -10,6 +10,6 @@ public interface StudentService {
 
     public StudentBean getStudentById(String studentId) throws InterruptedException, ExecutionException;
 
-    public List<String> getStudentBySubjectCode(String subjectCode)
+    public List<StudentBean> getStudentBySubjectCode(String subjectCode)
             throws InterruptedException, ExecutionException;
 }
