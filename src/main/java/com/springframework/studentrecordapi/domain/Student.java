@@ -1,6 +1,6 @@
 package com.springframework.studentrecordapi.domain;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -22,5 +22,5 @@ public class Student {
     @Id
     private String student_id;
     @OneToMany(mappedBy = "student")
-    private Set<ClassDetails> class_details;
+    private List<ClassDetails> class_details;
 }
