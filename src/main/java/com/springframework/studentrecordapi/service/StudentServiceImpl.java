@@ -1,5 +1,6 @@
 package com.springframework.studentrecordapi.service;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -7,38 +8,37 @@ import java.util.concurrent.ExecutionException;
 import org.springframework.stereotype.Service;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.cloud.FirestoreClient;
+import com.springframework.studentrecordapi.domain.Student;
+import com.springframework.studentrecordapi.repository.StudentRepository;
+import com.springframework.studentrecordapi.web.mappers.StudentMapper;
 import com.springframework.studentrecordapi.web.model.ClassDetails;
 import com.springframework.studentrecordapi.web.model.StudentBean;
 
-import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
     private final String COLLECTION_NAME = "students";
-
+    private final StudentRepository studentRepository;
+    private final StudentMapper studentMapper;
     private StudentBean student;
     private List<StudentBean> students = new LinkedList<StudentBean>();
 
     private Firestore db = FirestoreClient.getFirestore();
 
     @Override
-    public StudentBean getStudentByOid(@NonNull String oid) throws InterruptedException, ExecutionException {
-        DocumentReference docRef = db.collection(COLLECTION_NAME).document(oid);
-
-        ApiFuture<DocumentSnapshot> future = docRef.get();
-
-        DocumentSnapshot document = future.get();
-
-        if (document.exists()) {
-            student = document.toObject(StudentBean.class);
+    public List<StudentBean> getStudents() {
+        Iterator<Student> st = studentRepository.findAll().iterator();
+        while (st.hasNext()) {
+            student = studentMapper.studentToStudentBean(st.next());
+            students.add(student);
         }
-        return student;
+        return students;
     }
 
     @Override
