@@ -20,10 +20,9 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("/oid/{oid}")
-    public ResponseEntity<StudentBean> getStudentByOid(@PathVariable String oid)
-            throws ExecutionError, ExecutionException, InterruptedException {
-        return new ResponseEntity<>(studentService.getStudentByOid(oid), HttpStatus.OK);
+    @GetMapping("/list")
+    public ResponseEntity<Object> getStudents() {
+        return new ResponseEntity<>(studentService.getStudents(), HttpStatus.OK);
     }
 
     @GetMapping("/studentId/{studentId}")
