@@ -15,5 +15,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class StudentBean implements Serializable {
     private String student_id;
-    private ArrayList<ClassDetails> class_details;
+    private ArrayList<ClassDetailsBean> class_details;
 }
