@@ -1,5 +1,7 @@
 package com.springframework.studentrecordapi.web.model;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ClassDetails {
+public class ClassDetailsBean implements Serializable {
     private String subject_code;
     private String subject_desc;
     private String week_start_date;
