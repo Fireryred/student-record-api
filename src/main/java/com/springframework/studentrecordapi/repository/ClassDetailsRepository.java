@@ -10,4 +10,7 @@ import com.springframework.studentrecordapi.domain.ClassDetails;
 public interface ClassDetailsRepository extends JpaRepository<ClassDetails, String> {
     @Query(value = "SELECT * FROM class_details WHERE student_id = ?1", nativeQuery = true)
     ArrayList<ClassDetails> getAllClassDetailsFromStudentId(String studentId);
+
+    @Query(value = "SELECT subject_code FROM class_details GROUP BY subject_code", nativeQuery = true)
+    ArrayList<String> getAllSubjectCode();
 }
