@@ -5,8 +5,6 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
