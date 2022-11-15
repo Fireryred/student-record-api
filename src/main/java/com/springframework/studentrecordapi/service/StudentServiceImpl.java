@@ -1,26 +1,15 @@
 package com.springframework.studentrecordapi.service;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 import org.springframework.stereotype.Service;
 
-import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
-import com.google.firebase.cloud.FirestoreClient;
-import com.springframework.studentrecordapi.domain.ClassDetails;
 import com.springframework.studentrecordapi.domain.Student;
-import com.springframework.studentrecordapi.repository.ClassDetailsRepository;
 import com.springframework.studentrecordapi.repository.StudentRepository;
-import com.springframework.studentrecordapi.web.mappers.ClassDetailsMapper;
 import com.springframework.studentrecordapi.web.mappers.StudentMapper;
-import com.springframework.studentrecordapi.web.model.ClassDetailsBean;
 import com.springframework.studentrecordapi.web.model.StudentBean;
 
 import lombok.RequiredArgsConstructor;
@@ -28,18 +17,13 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
-
     private final StudentRepository studentRepository;
-    private final ClassDetailsRepository classDetailsRepository;
 
     private final StudentMapper studentMapper;
-    private final ClassDetailsMapper classDetailsMapper;
 
     private StudentBean student;
-    private ClassDetailsBean classDetail;
 
     private List<StudentBean> students = new LinkedList<StudentBean>();
-    private ArrayList<ClassDetailsBean> classDetails = new ArrayList<ClassDetailsBean>();
 
     // private Firestore db = FirestoreClient.getFirestore();
 
