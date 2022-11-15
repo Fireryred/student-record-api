@@ -24,7 +24,7 @@ import lombok.Setter;
 public class ClassDetails {
     @Id
     @GeneratedValue
-    private int customer_id;
+    private int id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
