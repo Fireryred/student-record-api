@@ -3,9 +3,8 @@ package com.springframework.studentrecordapi.web.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import com.google.auto.value.AutoValue.Builder;
-
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
