@@ -5,13 +5,11 @@ import org.mapstruct.Mapping;
 
 import com.springframework.studentrecordapi.domain.ClassDetails;
 import com.springframework.studentrecordapi.web.model.ClassDetailsBean;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ClassDetailsMapper {
-    @Mapping(target = "isHoliday", ignore = true)
     ClassDetailsBean entityToBean(ClassDetails dt);
 
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "student", ignore = true)
     ClassDetails beanToEntity(ClassDetailsBean dt);
 }
