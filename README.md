@@ -57,3 +57,6 @@ Utilises the REST API endpoint you developed in Step 1.
 - Design Patterns
 - Error Handling to show meaningful messages
 - User experience
+
+#Swagger UI
+http://localhost:8080/swagger-ui/index.html
