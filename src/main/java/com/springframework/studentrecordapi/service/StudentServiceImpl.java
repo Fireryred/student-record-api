@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.springframework.studentrecordapi.domain.Student;
@@ -46,4 +47,13 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.getAllStudentIdBySubjectCode(subjectCode);
     }
 
+    @Override
+    public List<StudentBean> getStudents(int page) {
+        List<Student> st = studentRepository.findAll(PageRequest.of(page, 10)).toList();
+        for (Student eStudent : st) {
+            student = studentMapper.studentToStudentBean(eStudent);
+            students.add(student);
+        }
+        return students;
+    }
 }

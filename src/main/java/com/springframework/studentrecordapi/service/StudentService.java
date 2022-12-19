@@ -12,4 +12,5 @@ public interface StudentService {
 
     public List<Map<String, String>> getStudentBySubjectCode(String subjectCode);
 
+    public List<StudentBean> getStudents(int page);
 }
