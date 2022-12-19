@@ -373,3 +373,6 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
 	... 81 more
+2022-11-17 16:22:05 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * ||[*] NULL FROM CLASS_DETAILS WHERE 18763342"; SQL statement:
+SELECT * || NULL FROM CLASS_DETAILS WHERE 18763342 [42000-200]
