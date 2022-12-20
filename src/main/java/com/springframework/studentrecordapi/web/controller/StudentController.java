@@ -21,7 +21,7 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("/list")
+    @GetMapping("/lists")
     public ResponseEntity<List<StudentBean>> getStudents() {
         return new ResponseEntity<>(studentService.getStudents(), HttpStatus.OK);
     }
