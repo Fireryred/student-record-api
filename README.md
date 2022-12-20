@@ -60,4 +60,4 @@ Utilises the REST API endpoint you developed in Step 1.
 
 ### Swagger UI
 
-http://localhost:8080/swagger-ui/index.html
+http://localhost:8080/openapi/swagger-ui/index.html

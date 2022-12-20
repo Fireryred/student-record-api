@@ -26,6 +26,11 @@ public class StudentController {
         return new ResponseEntity<>(studentService.getStudents(), HttpStatus.OK);
     }
 
+    @GetMapping(path = "/list", params = { "page" })
+    public ResponseEntity<List<StudentBean>> getStudents(@RequestParam("page") int page) {
+        return new ResponseEntity<>(studentService.getStudents(page), HttpStatus.OK);
+    }
+
     @GetMapping("/studentId/{studentId}")
     public ResponseEntity<List<Map<String, String>>> getStudentById(@PathVariable String studentId) {
         return new ResponseEntity<>(studentService.getStudentById(studentId), HttpStatus.OK);
@@ -34,10 +39,5 @@ public class StudentController {
     @GetMapping("/subjectCode/{subjectCode}")
     public ResponseEntity<List<Map<String, String>>> getStudentBySubjectCode(@PathVariable String subjectCode) {
         return new ResponseEntity<>(studentService.getStudentBySubjectCode(subjectCode), HttpStatus.OK);
-    }
-
-    @GetMapping(path = "/list", params = { "page" })
-    public ResponseEntity<List<StudentBean>> getStudents(@RequestParam("page") int page) {
-        return new ResponseEntity<>(studentService.getStudents(page), HttpStatus.OK);
     }
 }
