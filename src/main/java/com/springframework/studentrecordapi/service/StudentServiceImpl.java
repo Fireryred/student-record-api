@@ -56,4 +56,14 @@ public class StudentServiceImpl implements StudentService {
         }
         return students;
     }
+
+    @Override
+    public List<StudentBean> getSearchResult(String searchValue) {
+        Iterator<Student> st = studentRepository.getSearchResult(searchValue).iterator();
+        while (st.hasNext()) {
+            student = studentMapper.studentToStudentBean(st.next());
+            students.add(student);
+        }
+        return students;
+    }
 }

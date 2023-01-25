@@ -23,4 +23,11 @@ public interface StudentRepository extends JpaRepository<Student, String> {
                         "WHERE student.student_id = ?1 " +
                         "GROUP BY class_details.subject_code ", nativeQuery = true)
         List<Map<String, String>> getAllSubjectCodeByStudentId(String studentId);
+
+        @Query(value = "SELECT * FROM student " +
+                        "INNER JOIN class_details ON class_details.student_id = student.student_id " +
+                        "WHERE student.student_id LIKE %?1% " +
+                        "OR class_details.subject_code LIKE %?1% " +
+                        "OR class_details.subject_desc LIKE %?1%", nativeQuery = true)
+        List<Student> getSearchResult(String search);
 }

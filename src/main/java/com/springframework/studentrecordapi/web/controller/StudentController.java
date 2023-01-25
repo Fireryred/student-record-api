@@ -40,4 +40,9 @@ public class StudentController {
     public ResponseEntity<List<Map<String, String>>> getStudentBySubjectCode(@PathVariable String subjectCode) {
         return new ResponseEntity<>(studentService.getStudentBySubjectCode(subjectCode), HttpStatus.OK);
     }
+
+    @GetMapping(path = "/search", params = { "search" })
+    public ResponseEntity<List<StudentBean>> getSearchResult(@RequestParam("search") String searchValue) {
+        return new ResponseEntity<>(studentService.getSearchResult(searchValue), HttpStatus.OK);
+    }
 }
